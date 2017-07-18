@@ -1,8 +1,8 @@
 <div class="todo">     
         {{#sortable-group tagName="ul" class="todo--list" onChange="reorderItems" as |group|}}
             <li class="todo--list--li">
-            <input class="todo--input" type="text" maxlength="70"> 
-            <button class=" todo--button todo--button__default">{{fa-icon "plus"}}</button>
+            {{input valueBinding=model.newTodo.task class="todo--input" maxlength="70"}}
+            <button class=" todo--button todo--button__default" {{action "add"}}>{{fa-icon "plus"}}</button>
             </li>
             {{#each model.todos as |todo|}}
                 {{#sortable-item tagName="li" class="todo--list--li" spacing=15 model=todo group=group handle=".handle"}}
