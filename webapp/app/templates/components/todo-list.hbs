@@ -1,0 +1,15 @@
+{{#each list as |todo|}}
+    {{#sortable-item tagName="li" class="todo--list--li" spacing=15 model=todo group=group handle=".handle"}}        
+        {{#if todo.isOnEdit}}
+            {{input class="todo--task" value=todo.task}}              
+        {{else}}            
+            <span class="todo--task">{{todo.task}}</span> 
+        {{/if}}
+        <button class=" todo--button todo--button__info" {{action "activeEdit" todo }} >{{fa-icon "pencil"}}</button> 
+        <button class=" todo--button todo--button__danger" {{action "remove" todo.id }} >{{fa-icon "trash-o"}}</button>
+    {{/sortable-item}}
+        {{else}}
+        <div class="todo--list--li">
+        <span class="handle">Sorry there is no data</span>
+    </div>
+{{/each}}

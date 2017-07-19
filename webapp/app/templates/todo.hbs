@@ -1,18 +1,13 @@
 <div class="todo">     
-        {{#sortable-group tagName="ul" class="todo--list" onChange="reorderItems" as |group|}}
-            <li class="todo--list--li">
-            {{input valueBinding=model.newTodo.task class="todo--input" maxlength="70"}}
-            <button class=" todo--button todo--button__default" {{action "add"}}>{{fa-icon "plus"}}</button>
-            </li>
-            {{#each model.todos as |todo|}}
-                {{#sortable-item tagName="li" class="todo--list--li" spacing=15 model=todo group=group handle=".handle"}}
-                    <span class="todo--task">{{todo.task}}</span> <button class=" todo--button todo--button__info" >{{fa-icon "pencil"}}</button> 
-                    <button class=" todo--button todo--button__danger">{{fa-icon "trash-o"}}</button>
-                {{/sortable-item}}
-                {{else}}
-                <div class="todo--list--li">
-                    <span class="handle">Sorry there is no data</span>
-                </div>
-            {{/each}}
-            {{/sortable-group}}        
+    {{!--{{#sortable-group tagName="ul" class="todo--list" onChange="reorderItems" as |group|}}
+        {{todo-input todo}}
+        {{todo-list list=model.todos}}
+    {{/sortable-group}}   
+    --}}
+    <ul class="todo--list">
+        {{todo-input list=model.todos counter=model.counter}}
+        {{todo-list list=model.todos }}     
+        <button {{action "foo"}}>algo</button>
+    </ul>
+         
 </div>
