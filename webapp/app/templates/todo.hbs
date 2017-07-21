@@ -5,9 +5,7 @@
     {{/sortable-group}}   
     --}}
     <ul class="todo--list">
-        {{todo-input list=model.todos counter=model.counter}}
-        {{todo-list list=model.todos }}     
-        <button {{action "foo"}}>algo</button>
-    </ul>
-         
+        {{todo-input list=model.todos store=model.store counter=model.counter}}
+        {{todo-list list=model.todos store=model.store }}     
+    </ul>         
 </div>

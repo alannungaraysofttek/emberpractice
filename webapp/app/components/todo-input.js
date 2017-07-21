@@ -4,9 +4,10 @@ export default Ember.Component.extend({
     actions:{
            add(){
                this.counter++;
-               this.get("list").pushObject({id:this.counter,task:this.get("newTodo")});
-               this.set("newTodo","");
-            }
+                this.store.createRecord('todo',
+                {id:this.counter,task:this.get("newTodo"),isDone: true,}
+                );          
+         }
 
     }
 });

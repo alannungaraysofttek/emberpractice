@@ -2,18 +2,16 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
         actions:{
-        activeEdit(item){
-            let todoEdit =this.get("list").findBy("id",item.id)        
-            todoEdit.isOnEdit=true;
-            console.log(todoEdit);
-            console.log(this.get("list"))
+        activeEdit(item){    
+                            console.log(this.get('store').findAll('todo'))
         },
         edit(item){            
+            
         },
-        remove(){            
-            let todoEdit =this.get("list").removeObject();      
-            console.log(todoEdit);
-            console.log(this.get("list"))     
+        remove(item){            
+            this.get("store").findRecord('todo', 0, { backgroundReload: true }).then(function(todo) {
+                console.log(todo)
+            }); 
         }
     }
 });
