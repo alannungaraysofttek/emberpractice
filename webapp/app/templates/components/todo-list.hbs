@@ -1,12 +1,11 @@
 {{#each list as |todo|}}
-    {{#sortable-item tagName="li" class="todo--list--li" spacing=15 model=todo group=group handle=".handle"}}        
+    {{#sortable-item tagName="li" class="todo--list--li" spacing=15 model=todo group=group handle=".handle"}}
         {{input name=(concat "box" todo.id) type="checkbox"}}
         {{#if todo.isOnEdit}}
-            {{input class="todo--task" value=todo.task}}              
-        {{else}}            
-            <label name={{concat "box" todo.id}}  class="todo--task">{{todo.task}}</label> 
+            {{input class="todo--task" value=todo.task focusOut=(action "saveEdit" todo) }}
+        {{else}}
+            <label ondblclick={{action "activeEdit" todo }} name={{concat "box" todo.id}}  class="todo--task">{{todo.task}}</label>
         {{/if}}
-        <button class=" todo--button todo--button__info" {{action "activeEdit" todo }} >{{fa-icon "pencil"}}</button> 
         <button class=" todo--button todo--button__danger" {{action "remove" todo }} >{{fa-icon "trash-o"}}</button>
     {{/sortable-item}}
         {{else}}

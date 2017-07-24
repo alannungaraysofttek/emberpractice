@@ -3,10 +3,11 @@ import Ember from 'ember';
 export default Ember.Component.extend({
     actions:{
            add(){
-               this.counter++;
-                this.store.createRecord('todo',
-                {id:this.counter,task:this.get("newTodo"),isDone: true,}
-                );          
+               var todo=  this.store.createRecord('todo',
+                {task:this.get("newTodo"),isDone: true,}
+                );
+                todo.save();
+                this.set("newTodo","")
          }
 
     }
